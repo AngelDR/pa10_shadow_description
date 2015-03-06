@@ -1,0 +1,1162 @@
+<robot name="pa10_shadow" >
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/S1.stl"/>
+			</geometry>
+			<material name="bluePA10">
+				<color rgba="0.753 0.8156 1 1 "/>
+			</material>
+		</visual>
+		<collision>
+      			<geometry>
+        			<mesh filename="package://testPA10_description/meshes/stl/S1.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkS2" >
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/S2.stl"/>
+			</geometry>
+			<material name="whitePA10" >
+				<color rgba="0.92 0.92 0.92 1" />
+			</material>
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/S2.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkS3" >
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/S3.stl"/>
+			</geometry>
+			<material name="bluePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/S3.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkE1" >
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/E1.stl"/>
+			</geometry>
+			<material name="whitePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/E1.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkE2">
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/E2.stl"/>
+			</geometry>
+			<material name="bluePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/E2.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkW1" >
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/W1.stl"/>
+			</geometry>
+			<material name="whitePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/W1.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="linkW2" >
+		<visual>
+			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/W2.stl"/>
+			</geometry>
+			<material name="bluePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<mesh filename="package://testPA10_description/meshes/stl/W2.stl"/>
+      			</geometry>
+  		</collision>
+	</link>
+
+	<link name="endeffector" />
+
+	<link name="inter" >
+		<visual>
+			<geometry>
+				<-- mesh filename="package://pa10_shadow_description/meshes/stl/W2.stl" /-->
+			</geometry>
+			<material name="bluePA10" />
+		</visual>
+		<collision>
+      			<geometry>
+				<-- mesh filename="package://pa10_shadow_description/meshes/stl/W2.stl" /-->
+      			</geometry>
+  		</collision>
+	</link>
+
+
+	<link name="forearm" >
+	  <inertial>
+	    <origin xyz="0 0 0.09" rpy="0 0 0"/>
+	    <mass value="3.0" />
+	    <inertia ixx="0.108" ixy="0.0" ixz="0.0" iyy="0.108" iyz="0.0" izz="0.054" />
+	  </inertial>
+	  <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry name="shadow_forearm_geom">
+		  <mesh filename="package://sr_description/hand/model/forearm.dae" scale="0.001 0.001 0.001"/>
+		</geometry>
+		<material name="Grey" />
+	  </visual>
+	  <collision>
+	    <origin xyz="0 0 0.09" rpy="0 0 0" />
+		<geometry name="shadow_forearm_collision">
+		  <cylinder radius="0.06" length="0.180"/>
+		</geometry>
+	  </collision>
+	</link>
+	
+	<link name="wrist" >
+	    <inertial>
+	      <origin xyz="0 0.0 0.0" rpy="0 0 0" />
+	      <!--<insert_block name="origin" />-->
+	      <mass value="0.1" />
+	      <inertia ixx="0.0120" ixy="0.0" ixz="0.0" iyy="0.0148" iyz="0.0" izz="0.00438" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="wrist_visual">
+	    <mesh filename="package://sr_description/hand/model/wrist.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="LightGrey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="1.5708 1.5708 0 " />
+	      <geometry name="wrist_collision_geom">
+		<cylinder radius="0.0135" length="0.030" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="-0.026 0 0.034" rpy="0 1.5708 0" />
+	      <geometry>
+	      <cylinder radius="0.011" length="0.010" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0.031 0 0.034" rpy="0 1.5708 0" />
+	      <geometry>
+	      <cylinder radius="0.011" length="0.010" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="-0.021 0 0.011" rpy="0 0.7854 0" />
+	      <geometry>
+		<box size="0.027 0.018 0.010" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0.026 0 0.010" rpy="0 -0.7854 0" />
+	      <geometry>
+		<box size="0.027 0.018 0.010" />
+	      </geometry>
+	    </collision> 
+	</link>
+	
+	
+	<link name="palm" >
+	      <inertial>
+		<origin xyz="0 0 0.035" rpy="0 0 0" />
+		<mass value="0.3" />
+		<inertia ixx="0.003581" ixy="0.0" ixz="0.0" iyy="0.005287" iyz="0.0" izz="0.002545" />
+	      </inertial>
+	      <visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry name="palm_visual">
+	      <mesh filename="package://sr_description/hand/model/palm.dae" scale="0.001 0.001 0.001" />
+		</geometry>
+		<material name="Grey"/>
+	      </visual>
+	      <collision>
+		<origin xyz="0.011 0 0.038" rpy="0 0 0" />
+		<geometry name="palm_collision_geom">
+		  <box size="0.062 0.024 0.098" />
+		</geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0.011 0 0.089" rpy="0 0 0" />
+		    <geometry>
+		<box size="0.018 0.024 0.004" />
+	      </geometry>
+	    </collision> 
+	    <collision>
+	      <origin xyz="-0.030 0 0.009" rpy="0 0 0" />
+		    <geometry>
+		<box size="0.020 0.024 0.040" />
+	      </geometry>
+	    </collision> 
+	</link>
+	
+	
+	<link name="ffknuckle">
+	    <inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <!--<insert_block name="origin" /> -->
+	      <mass value="0.08" />
+	      <inertia ixx="0.0026" ixy="0.0" ixz="0.0" iyy="0.0026" iyz="0.0" izz="0.0032" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0.0005" rpy="0 0 0" />
+	      <geometry name="ffknuckle_visual">
+	    <mesh filename="package://sr_description/hand/model/knuckle.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="LightGrey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 1.5708 0" />
+	      <geometry name="ffknuckle_collision_geom">
+		<cylinder radius="0.007" length="0.014" />
+	      </geometry>
+	    </collision>
+	</link>
+	
+	<link name="ffproximal">
+	    <inertial>
+	      <mass value="0.030" />
+	      <origin xyz="0 0 0.0225" />
+	      <inertia ixx="0.003" ixy="0.0" ixz="0.0" iyy="0.003" iyz="0.0" izz="0.0003" />
+	    </inertial>
+	    <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="ffproximal_visual">
+		<mesh filename="package://sr_description/hand/model/F3.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry name="ffproximal_collision_geom">
+		<cylinder radius="0.007" length="0.040" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="ffmiddle">
+	    <inertial>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0" />
+	      <mass value="0.020" />
+	      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.0002" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="ffmiddle_visual">
+	    <mesh filename="package://sr_description/hand/model/F2.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	  <collision>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0 " />
+	      <geometry name="ffmiddle_collision_geom">
+		<cylinder radius="0.007" length="0.025" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.0" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="ffdistal">
+	    <inertial>
+	      <mass value="0.010" />
+	      <origin xyz="0 0 0.012" />
+	      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0"
+	      izz="0.00025" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="ffdistal_visual">
+	    <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="ffdistal_collision_geom">
+	      <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	    </collision>
+	  </link>
+	
+	  <link name="fftip">
+	    <inertial>
+	      <mass value="0.001" />
+	      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0" izz="0.0" />
+	    </inertial>
+	  </link>
+	
+	
+	<link name="mfknuckle">
+	    <inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <!--<insert_block name="origin" /> -->
+	      <mass value="0.08" />
+	      <inertia ixx="0.0026" ixy="0.0" ixz="0.0" iyy="0.0026" iyz="0.0" izz="0.0032" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0.0005" rpy="0 0 0" />
+	      <geometry name="mfknuckle_visual">
+	    <mesh filename="package://sr_description/hand/model/knuckle.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="LightGrey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 1.5708 0" />
+	      <geometry name="mfknuckle_collision_geom">
+		<cylinder radius="0.007" length="0.014" />
+	      </geometry>
+	    </collision>
+	</link>
+	
+
+	
+	<link name="mfproximal">
+	    <inertial>
+	      <mass value="0.030" />
+	      <origin xyz="0 0 0.0225" />
+	      <inertia ixx="0.003" ixy="0.0" ixz="0.0" iyy="0.003" iyz="0.0" izz="0.0003" />
+	    </inertial>
+	    <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="mfproximal_visual">
+		<mesh filename="package://sr_description/hand/model/F3.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry name="mfproximal_collision_geom">
+		<cylinder radius="0.007" length="0.040" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="mfmiddle">
+	    <inertial>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0" />
+	      <mass value="0.020" />
+	      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.0002" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="mfmiddle_visual">
+	    <mesh filename="package://sr_description/hand/model/F2.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	  <collision>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0 " />
+	      <geometry name="mfmiddle_collision_geom">
+		<cylinder radius="0.007" length="0.025" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.0" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="mfdistal">
+	    <inertial>
+	      <mass value="0.010" />
+	      <origin xyz="0 0 0.012" />
+	      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0"
+	      izz="0.00025" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="mfdistal_visual">
+	    <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="mfdistal_collision_geom">
+	      <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	    </collision>
+	  </link>
+	  
+	  <link name="mftip">
+	    <inertial>
+	      <mass value="0.001" />
+	      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0" izz="0.0" />
+	    </inertial>
+	  </link>
+	
+	<link name="rfknuckle">
+	    <inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <!--<insert_block name="origin" /> -->
+	      <mass value="0.08" />
+	      <inertia ixx="0.0026" ixy="0.0" ixz="0.0" iyy="0.0026" iyz="0.0" izz="0.0032" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0.0005" rpy="0 0 0" />
+	      <geometry name="rfknuckle_visual">
+	    <mesh filename="package://sr_description/hand/model/knuckle.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="LightGrey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 1.5708 0" />
+	      <geometry name="rfknuckle_collision_geom">
+		<cylinder radius="0.007" length="0.014" />
+	      </geometry>
+	    </collision>
+	</link>
+	
+	<link name="rfproximal">
+	    <inertial>
+	      <mass value="0.030" />
+	      <origin xyz="0 0 0.0225" />
+	      <inertia ixx="0.003" ixy="0.0" ixz="0.0" iyy="0.003" iyz="0.0" izz="0.0003" />
+	    </inertial>
+	    <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="rfproximal_visual">
+		<mesh filename="package://sr_description/hand/model/F3.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry name="rfproximal_collision_geom">
+		<cylinder radius="0.007" length="0.040" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="rfmiddle">
+	    <inertial>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0" />
+	      <mass value="0.020" />
+	      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.0002" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="rfmiddle_visual">
+	    <mesh filename="package://sr_description/hand/model/F2.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	  <collision>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0 " />
+	      <geometry name="rfmiddle_collision_geom">
+		<cylinder radius="0.007" length="0.025" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.0" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="rfdistal">
+	    <inertial>
+	      <mass value="0.010" />
+	      <origin xyz="0 0 0.012" />
+	      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0"
+	      izz="0.00025" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="rfdistal_visual">
+	    <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="rfdistal_collision_geom">
+	      <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	    </collision>
+	  </link>
+	  
+	  <link name="rftip">
+	    <inertial>
+	      <mass value="0.001" />
+	      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0" izz="0.0" />
+	    </inertial>
+	  </link>
+	  
+	  <link name="thbase">
+	      <inertial>
+		<mass value="0.010" />
+		  <origin xyz="0 0 0" rpy="0 0 0"/>
+		<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003" />
+	      </inertial>
+	      <visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry name="thbase_visual">
+		  <box size="0.001 0.001 0.001" />
+		</geometry>
+	      <material name="shadow_thbase_material">
+		  <color rgba="0.5 0.5 0.5 1.0"/>
+		</material>
+	      </visual> 
+	      <collision>
+		<origin xyz="0 0 0.0" rpy="0 0 0 " />
+		<geometry name="thbase_collision_geom">
+		  <sphere radius="0.011" />
+		</geometry>
+	      </collision>
+	  </link>
+	  
+	  <link name="thproximal">
+	      <inertial>
+		<mass value="0.040" />
+		<origin xyz="0 0 0.019" rpy="0 0 0"/>
+		<inertia ixx="0.00496" ixy="0.0" ixz="0.0" iyy="0.00496" iyz="0.0" izz="0.000312" />
+	      </inertial>
+	      <visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry name="thproximal_visual">
+	      <mesh filename="package://sr_description/hand/model/TH3_z.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="shadow_thproximal_material">
+		  <color rgba="0.2 0.2 0.2 1.0"/>
+		</material>
+	      </visual>   
+	      <collision>
+		<origin xyz="0 0 0.020" rpy="0 0 0 " />
+		<geometry name="thproximal_collision_geom">
+		  <cylinder radius="0.012" length="0.018" />
+		</geometry>
+	      </collision>      
+	  </link>
+	  
+	  <link name="thhub">
+	      <inertial>
+		<mass value="0.01" />
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003" />
+	      </inertial>
+	      <visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry name="thhub_visual">
+		<box size="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="shadow_thhub_material">
+		  <color rgba="0.7 0.7 0.7 1.0"/>
+		</material>
+	      </visual>
+		    <collision>
+		<origin xyz="0 0 0.0" rpy="0 0 0 " />
+	      <geometry name="thhub_collision_geom">
+		  <sphere radius="0.010" />
+		</geometry>
+	      </collision>
+	    </link>
+	    
+	    <link name="thmiddle">
+		<inertial>
+		  <mass value="0.027" />
+		  <origin xyz="0 0 0.016" rpy="0 0 0"/>
+		  <inertia ixx="0.0026" ixy="0.0" ixz="0.0" iyy="0.0026" iyz="0.0" izz="0.000169" />
+		</inertial>
+		<visual>
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <geometry name="thmiddle_visual">
+		  <mesh filename="package://sr_description/hand/model/TH2_z.dae" scale="0.001 0.001 0.001" />
+		</geometry>
+		<material name="shadow_thmiddle_material">
+		    <color rgba="0.2 0.2 0.2 1.0"/>
+		  </material>
+		</visual>
+	      
+		<collision>
+		  <origin xyz="0 0 0.016" rpy="0 0 0 " />
+		  <geometry name="thmiddle_collision_geom">
+		    <cylinder radius="0.011" length="0.031" />
+		  </geometry>
+		</collision>
+		<collision>
+		  <origin xyz="0 0 0.032" rpy="0 0 0 " />
+		  <geometry>
+		    <sphere radius="0.010" />
+		  </geometry>
+		</collision> 
+	     </link>
+	     
+	     <link name="thdistal">
+		<inertial>
+		  <mass value="0.016" />
+		  <origin xyz="0 0 0.01375" rpy="0 0 0"/>
+		  <inertia ixx="0.0007" ixy="0.0" ixz="0.0" iyy="0.0007" iyz="0.0"
+			    izz="0.00010" />
+		</inertial>
+		<visual>
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <geometry name="thdistal_visual">
+		    <mesh filename="package://sr_description/hand/model/TH1_z.dae" scale="0.001 0.001 0.001" />
+		  </geometry>
+		  <material name="shadow_thmiddle_material">
+		    <color rgba="0.2 0.2 0.2 1.0"/>
+		  </material>
+		</visual>
+		<collision>
+		  <origin xyz="0 0 0" rpy="0 0 0 " />
+		  <geometry name="thmiddle_collision_geom">
+		    <mesh filename="package://sr_description/hand/model/TH1_z.dae" scale="0.001 0.001 0.001" />
+		    <!--	  <box size="0.015 0.015 0.015" /> -->
+		  </geometry>
+		</collision>
+	      </link>
+	      
+	      <link name="thtip">
+		    <inertial>
+		      <mass value="0.001" />
+		      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0" izz="0.0" />
+		    </inertial>
+	      </link>
+	      
+	      
+	      <link name="lfmetacarpal">
+		    <inertial>
+		      <origin xyz="0 0 0.04" rpy="0 0 0" />
+			  <mass value="0.030" />
+			  <inertia ixx="0.00545" ixy="0.0" ixz="0.0" iyy="0.0056352" iyz="0.0" izz="0.0004272" />
+		    </inertial>
+		    <visual>
+		      <origin xyz="0 0 0" rpy="0 0 0" />
+		      <geometry name="lfmetacarpal_visual">
+			<mesh filename="package://sr_description/hand/model/lfmetacarpal.dae" scale="0.001 0.001 0.001" />
+		      </geometry>
+		      <material name="Grey" />
+		    </visual>
+		    <collision>
+		      <origin xyz="0 0 0.038" rpy="0 0 0" />
+		      <geometry name="lfmetacarpal_collision_geom">
+			<box size="0.018 0.024 0.040" />
+		      </geometry>
+		    </collision>
+		</link>
+		
+	<link name="lfknuckle">
+	    <inertial>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <!--<insert_block name="origin" /> -->
+	      <mass value="0.08" />
+	      <inertia ixx="0.0026" ixy="0.0" ixz="0.0" iyy="0.0026" iyz="0.0" izz="0.0032" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0.0005" rpy="0 0 0" />
+	      <geometry name="lfknuckle_visual">
+	    <mesh filename="package://sr_description/hand/model/knuckle.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="LightGrey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 1.5708 0" />
+	      <geometry name="lfknuckle_collision_geom">
+		<cylinder radius="0.007" length="0.014" />
+	      </geometry>
+	    </collision>
+	</link>
+	
+	<link name="lfproximal">
+	    <inertial>
+	      <mass value="0.030" />
+	      <origin xyz="0 0 0.0225" />
+	      <inertia ixx="0.003" ixy="0.0" ixz="0.0" iyy="0.003" iyz="0.0" izz="0.0003" />
+	    </inertial>
+	    <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="lfproximal_visual">
+		<mesh filename="package://sr_description/hand/model/F3.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	      <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry name="lfproximal_collision_geom">
+		<cylinder radius="0.007" length="0.040" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="lfmiddle">
+	    <inertial>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0" />
+	      <mass value="0.020" />
+	      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.0002" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="lfmiddle_visual">
+	    <mesh filename="package://sr_description/hand/model/F2.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	  <collision>
+	      <origin xyz="0 0 0.0125" rpy="0 0 0 " />
+	      <geometry name="lfmiddle_collision_geom">
+		<cylinder radius="0.007" length="0.025" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.0" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	    <collision>
+	      <origin xyz="0 0 0.025" rpy="0 0 0 " />
+	      <geometry>
+		<sphere radius="0.007" />
+	      </geometry>
+	    </collision>
+	 </link>
+	 
+	 <link name="lfdistal">
+	    <inertial>
+	      <mass value="0.010" />
+	      <origin xyz="0 0 0.012" />
+	      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0"
+	      izz="0.00025" />
+	    </inertial>
+	    <visual>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="lfdistal_visual">
+	    <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	    </geometry>
+	    <material name="Grey" />
+	    </visual>
+	    <collision>
+	      <origin xyz="0 0 0" rpy="0 0 0" />
+	      <geometry name="lfdistal_collision_geom">
+	      <mesh filename="package://sr_description/hand/model/F1.dae" scale="0.001 0.001 0.001" />
+	      </geometry>
+	    </collision>
+	  </link>
+	  
+	  <link name="lftip">
+	    <inertial>
+	      <mass value="0.001" />
+	      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0" izz="0.0" />
+	    </inertial>
+	  </link>
+	  
+	  
+	
+	
+	
+
+	<joint name="S1" type="revolute">
+		<parent link="base_link"/>
+		<child link="linkS2"/>
+		<origin xyz="0 0 0.317" rpy="0 0 3.1415" />
+		<axis xyz="0 0 1" />
+		<limit effort="1000.0" lower="-3.09" upper="3.09" velocity="1"/>		
+	</joint>
+	
+	<joint name="S2" type="revolute">
+		<parent link="linkS2"/>
+		<child link="linkS3"/>
+		<origin xyz="0 0 0" rpy="0 0 0" /> <!-- .1155" rpy="0 0 0" /-->
+		<axis xyz="0 1 0" />
+		<limit effort="1000.0" lower="-1.59" upper="1.59" velocity="1"/>
+	</joint>
+
+	<joint name="S3" type="revolute">
+		<parent link="linkS3"/>
+		<child link="linkE1"/>
+		<origin xyz="0 0 0.450" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit effort="1000.0" lower="-3.04" upper="3.04" velocity="2"/>
+	</joint>
+
+	<joint name="E1" type="revolute">
+		<parent link="linkE1"/>
+		<child link="linkE2"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit effort="1000.0" lower="-2.39" upper="2.39" velocity="2"/>
+	</joint>
+
+	<joint name="E2" type="revolute">
+		<parent link="linkE2"/>
+		<child link="linkW1"/>
+		<origin xyz="0 0 0.480" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit effort="1000.0" lower="-4.45" upper="4.45" velocity="6.28"/>
+	</joint>
+
+	<joint name="W1" type="revolute">
+		<parent link="linkW1"/>
+		<child link="linkW2"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<limit effort="1000.0" lower="-2.88" upper="2.88" velocity="6.28"/>
+	</joint>
+
+
+	<joint name="W2" type="revolute">
+		<parent link="linkW2"/>
+		<child link="endeffector"/>
+		<origin xyz="0 0 0.070" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<limit effort="1000.0" lower="-6.28" upper="6.28" velocity="6.28"/>
+	</joint>
+
+	<joint name="inter_joint" type="fixed">
+		<parent link="endeffector"/>
+		<child link="inter"/>
+		<origin xyz="0 0 0.0" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<-- limit effort="1000.0" lower="-3.09" upper="3.09" velocity="1"/ -->		
+	</joint>
+
+	<joint name="shadow0" type="revolute">
+		<parent link="inter"/>
+		<child link="forearm"/>
+		<origin xyz="0 0 0.054" rpy="0 0 -1.57075" />
+		<axis xyz="0 0 1" />
+		<limit effort="1000.0" lower="-3.09" upper="3.09" velocity="1"/>		
+	</joint>
+	
+	<joint name="WRJ2" type="revolute">
+		<parent link="forearm"/>
+		<child link="wrist"/>
+		<origin xyz="0 -0.010 0.213" rpy="0 0 0" />
+		<insert_block name="origin" />
+		<axis xyz="0 1 0" />
+		<-- <limit lower="-30/180*3.14" upper="10/180*3.14" effort="30" velocity="1.0"/> -->
+		<limit lower="-0.05305" upper="0.01768" effort="30" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="WRJ1" type="revolute">
+		<parent link="wrist"/>
+		<child link="palm"/>
+		<origin xyz="0 0 0.034" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<-- <limit lower="${-40/180*M_PI}" upper="${28/180*M_PI}" effort="30" velocity="1.0"/> -->
+		<limit lower="-0.07073" upper="0.04951" effort="30" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	
+	<joint name="FFJ4" type="revolute">
+		<parent link="palm"/>
+		<child link="ffknuckle"/>
+		<origin xyz="0.033 0 0.095" rpy="0 0 0" />
+		<axis xyz="0 -1 0" />
+		<insert_block name="origin" />
+		<insert_block name="axis"/>
+		<limit lower="-0.03536" upper="0.03536"
+		effort="2" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="MFJ4" type="revolute">
+		<parent link="palm"/>
+		<child link="mfknuckle"/>
+		<origin xyz="0.011 0 0.099" rpy="0 0 0" />
+		<axis xyz="0 -1 0" />
+		<insert_block name="origin" />
+		<insert_block name="axis"/>
+		<limit lower="-0.03536" upper="0.03536"
+		effort="2" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="RFJ4" type="revolute">
+		<parent link="palm"/>
+		<child link="rfknuckle"/>
+		<origin xyz="-0.011 0 0.095" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<insert_block name="origin" />
+		<insert_block name="axis"/>
+		<limit lower="-0.03536" upper="0.03536"
+		effort="2" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="LFJ4" type="revolute">
+		<parent link="lfmetacarpal"/>
+		<child link="lfknuckle"/>
+		<origin xyz="0 0 0.06579" rpy="0 0 0" />
+		<axis xyz="0 1 0" />
+		<insert_block name="origin" />
+		<insert_block name="axis"/>
+		<limit lower="-0.03536" upper="0.03536"
+		effort="2" velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	
+	<joint name="FFJ3" type="revolute">
+		<parent link="ffknuckle"/>
+		<child link="ffproximal"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+		
+	<joint name="MFJ3" type="revolute">
+		<parent link="mfknuckle"/>
+		<child link="mfproximal"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+		
+	<joint name="RFJ3" type="revolute">
+		<parent link="rfknuckle"/>
+		<child link="rfproximal"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="LFJ3" type="revolute">
+		<parent link="lfknuckle"/>
+		<child link="lfproximal"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0"/>
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="FFJ2" type="revolute">
+		<parent link="ffproximal"/>
+		<child link="ffmiddle"/>
+		<origin xyz="0 0 0.045" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="MFJ2" type="revolute">
+		<parent link="mfproximal"/>
+		<child link="mfmiddle"/>
+		<origin xyz="0 0 0.045" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	
+	<joint name="RFJ2" type="revolute">
+		<parent link="rfproximal"/>
+		<child link="rfmiddle"/>
+		<origin xyz="0 0 0.045" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="LFJ2" type="revolute">
+		<parent link="lfproximal"/>
+		<child link="lfmiddle"/>
+		<origin xyz="0 0 0.045" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	
+	
+	<joint name="FFJ1" type="revolute">
+		<parent link="ffmiddle"/>
+		<child link="ffdistal"/>
+		<origin xyz="0 0 0.025" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="MFJ1" type="revolute">
+		<parent link="mfmiddle"/>
+		<child link="mfdistal"/>
+		<origin xyz="0 0 0.025" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="RFJ1" type="revolute">
+		<parent link="rfmiddle"/>
+		<child link="rfdistal"/>
+		<origin xyz="0 0 0.025" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="LFJ1" type="revolute">
+		<parent link="lfmiddle"/>
+		<child link="lfdistal"/>
+		<origin xyz="0 0 0.025" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="2" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	</joint>
+	
+	<joint name="fftip" type="fixed">
+		<parent link="ffdistal"/>
+		<child link="fftip"/>
+		<origin xyz="0 0 0.026" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="mftip" type="fixed">
+		<parent link="mfdistal"/>
+		<child link="mftip"/>
+		<origin xyz="0 0 0.026" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="rftip" type="fixed">
+		<parent link="rfdistal"/>
+		<child link="rftip"/>
+		<origin xyz="0 0 0.026" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="lftip" type="fixed">
+		<parent link="lfdistal"/>
+		<child link="lftip"/>
+		<origin xyz="0 0 0.026" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="THJ5" type="revolute">
+		<parent link="palm"/>
+		<child link="thbase"/>
+		<origin xyz="0.034 -0.0085 0.029" rpy="0 0.785375 0" />
+		<axis xyz="0 0 -1" />
+		<limit lower="-0.10610" upper="0.10610" effort="10"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	 </joint>
+	 
+	 <joint name="THJ4" type="revolute">
+		<parent link="thbase"/>
+		<child link="thproximal"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="0.12379" effort="10" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	 </joint>
+	 
+	 <joint name="THJ3" type="revolute">
+		<parent link="thproximal"/>
+		<child link="thhub"/>
+		<origin xyz="0 0 0.038" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+		<limit lower="-0.01768" upper="0.01768" effort="10" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	 </joint>
+	 
+	 <joint name="THJ2" type="revolute">
+		<parent link="thhub"/>
+		<child link="thmiddle"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<axis xyz="0 -1 0" />
+		<limit lower="-0.07073" upper="0.07073" effort="10" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	  </joint>
+	  
+	  <joint name="THJ1" type="revolute">
+		<parent link="thmiddle"/>
+		<child link="thdistal"/>
+		<origin xyz="0 0 0.032" rpy="0 0 1.57075" />
+		<axis xyz="1 0 0" />
+		<limit lower="0" upper="1.57075" effort="10" velocity="1.0" />
+		<dynamics damping="0.1"/>
+	  </joint>
+	  
+	  <joint name="thtip" type="fixed">
+		<parent link="thdistal"/>
+		<child link="thtip"/>
+		<origin xyz="0 0 0.0275" rpy="0 0 0" />
+	  </joint>
+	  
+	  <joint name="LFJ5" type="revolute">
+		<parent link="palm"/>
+		<child link="lfmetacarpal"/>
+		<origin xyz="-0.033 0 0.02071" rpy="0 0 0" />
+		<axis xyz="0.573576436 0 0.819152044" />
+		<limit lower="0" upper="0.07957" effort="2"
+		velocity="1.0" />
+		<dynamics damping="0.1"/>
+	  </joint>
+
+
+
+
+</robot>
+		
+
+
