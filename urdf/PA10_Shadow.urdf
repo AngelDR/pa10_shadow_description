@@ -105,17 +105,6 @@
 	<link name="endeffector" />
 
 	<link name="inter" >
-		<visual>
-			<geometry>
-				<-- mesh filename="package://pa10_shadow_description/meshes/stl/W2.stl" /-->
-			</geometry>
-			<material name="bluePA10" />
-		</visual>
-		<collision>
-      			<geometry>
-				<-- mesh filename="package://pa10_shadow_description/meshes/stl/W2.stl" /-->
-      			</geometry>
-  		</collision>
 	</link>
 
 
